@@ -20,7 +20,7 @@ func NewQuoteService(qtDB *db.QuoteDB) *QuoteService {
 func (qs *QuoteService) SaveDiaryQuote() () {
 	err := qs.quoteDB.SaveDiaryQuote()
 	if err != nil {
-		panic(err)
+		return
 	}
 	fmt.Println("Diary Quote Generated!")
 	return
