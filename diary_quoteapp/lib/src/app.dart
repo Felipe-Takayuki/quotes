@@ -11,7 +11,10 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Scaffold(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+      backgroundColor: Color(0xffF4F07D),
         body: DiaryQuote(),
     ),);
   }
