@@ -1,0 +1,11 @@
+DROP DATABASE IF EXISTS quotes_db;
+CREATE DATABASE quotes_db;
+
+use quotes_db;
+
+CREATE TABLE QUOTE(
+    id       INT           NOT NULL     AUTO_INCREMENT   PRIMARY KEY,
+    quote_text     VARCHAR(255)  NOT NULL,
+    author   VARCHAR(100)  NOT NULL,
+    saved_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+); 

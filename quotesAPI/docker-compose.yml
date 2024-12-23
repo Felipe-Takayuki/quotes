@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.5.8-focal
+    container_name: quotes-db
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./quotes.sql:/docker-entrypoint-initdb.d/quotes.sql   
+    deploy:
+      resources: 
+        limits:
+          cpus: '0.30'
+          memory: 512M  
