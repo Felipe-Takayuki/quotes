@@ -19,33 +19,45 @@ class _DiaryQuoteState extends State<DiaryQuote> {
   }
   @override
   Widget build(BuildContext context) {
+      var sizeOf = MediaQuery.sizeOf(context);
+
     return  ListenableBuilder(listenable: quoteController, builder: (context,child) => 
-    Center(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+    Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: sizeOf.width * .98,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 20,
           children: [
             Text("quote of the day:", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+            
+            quoteController.quote.quote.isEmpty ? 
+            
+            Padding(
+              padding: const EdgeInsets.all(0),
+              child: CircularProgressIndicator(),
+            ) :
+            
             Container(
+              width: sizeOf.width *.75,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Color(0xffABA854)
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 10,
-                children: [
-                  Text("''${quoteController.quote.quote}''", style: TextStyle(fontSize: 26),),
-                  Text(quoteController.quote.author, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),)
-              
-                ],
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 10,
+                  children: [
+                    Text("''${quoteController.quote.quote}''", style: TextStyle(fontSize: 26),),
+                    Text(quoteController.quote.author, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),)
+                  ],
+                ),
               ),
-            ),
+            ) 
           ],
         ),
       ),
