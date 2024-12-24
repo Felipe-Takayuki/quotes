@@ -1,11 +1,6 @@
 package diary
 
 import (
-	"fmt"
-	"os"
-	"os/signal"
-	"syscall"
-
 	"github.com/Felipe-Takayuki/quotes/quotesAPI/internal/service"
 	"github.com/robfig/cron/v3"
 )
@@ -27,11 +22,4 @@ func (dq *DiaryQuote) GenerateDiaryQuote() {
 	c.Entry(id).Job.Run()
 
 	go c.Start()
-}
-
-func Listen() {
-	sig := make(chan os.Signal, 1)
-	signal.Notify(sig, os.Interrupt, syscall.SIGTERM)
-	<-sig
-	fmt.Println("CLOSED!")
 }
