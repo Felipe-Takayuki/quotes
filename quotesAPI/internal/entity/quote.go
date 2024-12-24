@@ -5,10 +5,15 @@ type Quote struct {
 	Author string `json:"author"`
 }
 
-type QuoteKenyeAPI struct {
+type QuoteResponse struct {
+	Quote  string `json:"q"`
+	Author string `json:"a"`
+}
+
+type QuoteAPI struct {
 	GRQ func() (*Quote, error)
 }
 
-func (q *QuoteKenyeAPI) GetRandomQuote() (*Quote, error) {
+func (q *QuoteAPI) GetRandomQuote() (*Quote, error) {
 	return q.GRQ()
 }
